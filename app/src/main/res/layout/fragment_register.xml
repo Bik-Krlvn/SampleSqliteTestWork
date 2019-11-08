@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+
+    tools:context=".ui.auth.fragment.RegisterFragment">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="@dimen/large_set_margin_16dp">
+
+
+        <ImageView
+            android:id="@+id/img_profile"
+            android:layout_width="match_parent"
+            android:layout_height="250dp"
+            android:layout_marginBottom="@dimen/medium_set_margin_8dp"
+            android:background="@drawable/profile"
+            android:clickable="true"
+            android:contentDescription="@string/desc_photo"
+            android:focusable="true"
+            android:scaleType="centerCrop" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginBottom="@dimen/medium_set_margin_8dp"
+            android:text="@string/label_change_image" />
+
+        <EditText
+            android:id="@+id/et_username"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/medium_set_margin_8dp"
+            android:background="@drawable/rounded_edit_text_bg"
+            android:hint="@string/hint_et_username"
+            android:inputType="textPersonName"
+            android:padding="@dimen/large_set_margin_16dp"
+            tools:ignore="Autofill" />
+
+        <EditText
+            android:id="@+id/et_email"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/medium_set_margin_8dp"
+            android:background="@drawable/rounded_edit_text_bg"
+            android:hint="@string/hint_et_email"
+            android:inputType="textEmailAddress"
+            android:padding="@dimen/large_set_margin_16dp"
+            tools:ignore="Autofill" />
+
+        <EditText
+            android:id="@+id/et_password"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/medium_set_margin_8dp"
+            android:background="@drawable/rounded_edit_text_bg"
+            android:hint="@string/hint_et_password"
+            android:inputType="textPassword"
+            android:padding="@dimen/large_set_margin_16dp"
+            tools:ignore="Autofill" />
+
+
+        <Button
+            android:id="@+id/btn_register"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/large_set_margin_16dp"
+            android:text="@string/label_btn_register" />
+
+        <TextView
+            android:id="@+id/btn_login"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="@dimen/medium_set_margin_8dp"
+            android:clickable="true"
+            android:focusable="true"
+            android:padding="@dimen/large_set_margin_16dp"
+            android:text="@string/label_have_account"
+            android:textColor="@color/colorPrimary" />
+
+    </LinearLayout>
+</ScrollView>

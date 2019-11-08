@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">SampleSqliteTestwork</string>
+
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="hint_et_username">username</string>
+    <string name="hint_et_password">password</string>
+    <string name="label_btn_login">login</string>
+    <string name="label_btn_register">register</string>
+    <string name="label_no_account">Don\'t have an account ?</string>
+    <string name="label_have_account">Already have an account</string>
+    <string name="label_change_image">click on image to change profile</string>
+    <string name="desc_photo">photo</string>
+    <string name="hint_et_email">email</string>
+    <string name="file_provider_authority" translatable="false">com.cheise_proj.samplesqlitetestwork.fileprovider</string>
+</resources>
