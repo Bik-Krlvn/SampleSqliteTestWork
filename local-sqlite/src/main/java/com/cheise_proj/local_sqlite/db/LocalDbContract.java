@@ -22,4 +22,20 @@ class LocalDbContract {
                 "" + COLUMN_PASSWORD + " TEXT NOT NULL, " +
                 "" + COLUMN_IMAGE + " TEXT NULL )";
     }
+
+    static final class ContactTable implements BaseColumns{
+        static final String TABLE_NAME = "contact";
+        static final String COLUMN_NAME = "contact_name";
+        static final String COLUMN_TEL = "contact_tel";
+        static final String COLUMN_EMAIL = "contact_email";
+        static final String COLUMN_USER_ID = "userId";
+
+        static final String SQL_CREATE_TABLE = "" +
+                "CREATE TABLE IF NOT EXISTS " + TABLE_NAME + " (" +
+                "" + _ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
+                "" + COLUMN_NAME + " TEXT NOT NULL, " +
+                "" + COLUMN_TEL + " TEXT NOT NULL, " +
+                "" + COLUMN_EMAIL + " TEXT NULL, " +
+                "" + COLUMN_USER_ID + " INTEGER NOT NULL )";
+    }
 }
