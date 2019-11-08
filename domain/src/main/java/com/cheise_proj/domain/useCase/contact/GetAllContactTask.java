@@ -1,6 +1,8 @@
 package com.cheise_proj.domain.useCase.contact;
 
 import com.cheise_proj.domain.entity.ContactEntity;
+import com.cheise_proj.domain.qualifiers.Background;
+import com.cheise_proj.domain.qualifiers.Foreground;
 import com.cheise_proj.domain.repository.ContactRepository;
 import com.cheise_proj.domain.useCase.base.ObservableUseCase;
 
@@ -26,7 +28,7 @@ public class GetAllContactTask extends ObservableUseCase<List<ContactEntity>, In
      * @param foreground provide rxj ava main thread scheduler
      */
     @Inject
-    public GetAllContactTask(ContactRepository contactRepository, Scheduler background, Scheduler foreground) {
+    public GetAllContactTask(ContactRepository contactRepository, @Background Scheduler background, @Foreground Scheduler foreground) {
         super(background, foreground);
         this.contactRepository = contactRepository;
     }
