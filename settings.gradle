@@ -1,0 +1,2 @@
+include ':app', ':domain', ':data', ':local-sqlite', ':presentation'
+rootProject.name='SampleSqliteTestwork'
