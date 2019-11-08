@@ -7,10 +7,16 @@ import com.cheise_proj.presentation.model.Contact;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.inject.Inject;
+
 /**
  * ContactEntityMapper, provides maps from contact model to domain layer
  */
 public class ContactEntityMapper implements Mapper<ContactEntity, Contact> {
+    @Inject
+    public ContactEntityMapper() {
+    }
+
     @Override
     public ContactEntity from(Contact contact) {
         return new ContactEntity(
