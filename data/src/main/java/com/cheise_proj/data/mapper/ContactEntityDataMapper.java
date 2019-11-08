@@ -7,10 +7,16 @@ import com.cheise_proj.domain.entity.ContactEntity;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.inject.Inject;
+
 /**
  * ContactEntityDataMapper, maps contact data to contact entity in domain layer
  */
 public class ContactEntityDataMapper implements Mapper<ContactEntity, ContactData> {
+    @Inject
+    public ContactEntityDataMapper() {
+    }
+
     @Override
     public ContactEntity from(ContactData contactData) {
         return new ContactEntity(
