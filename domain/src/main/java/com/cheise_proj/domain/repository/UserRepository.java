@@ -25,4 +25,11 @@ public interface UserRepository {
      */
     Observable<UserEntity> getAuthenticatedUser(String username, String password);
 
+    /**
+     * Returns user profile info
+     * @param userId input user id
+     * @return observable userEntity
+     */
+    Observable<UserEntity> getUserById(int userId);
+
 }

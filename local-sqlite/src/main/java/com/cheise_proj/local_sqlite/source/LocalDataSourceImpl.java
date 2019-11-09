@@ -52,6 +52,12 @@ public class LocalDataSourceImpl implements LocalDataSource {
     }
 
     @Override
+    public Single<UserData> getUserById(int userId) {
+        return userDao.getUserById(userId)
+                .map(userLocal -> userDataLocalMapper.from(userLocal));
+    }
+
+    @Override
     public Single<Integer> createContact(int userId, String name, String contact, String email) {
         return contactDao.createContact(
                 userId,

@@ -19,7 +19,8 @@ public class UserRepositoryImpl implements UserRepository {
 
     /**
      * Constructor
-     * @param localDataSource provide local data source
+     *
+     * @param localDataSource      provide local data source
      * @param userEntityDataMapper provide user entity mapper
      */
     @Inject
@@ -31,12 +32,19 @@ public class UserRepositoryImpl implements UserRepository {
 
     @Override
     public Observable<Integer> createUser(String username, String email, String password, String imagePath) {
-        return localDataSource.createUser(username, email,password,imagePath).toObservable();
+        return localDataSource.createUser(username, email, password, imagePath).toObservable();
     }
 
     @Override
     public Observable<UserEntity> getAuthenticatedUser(String username, String password) {
         return localDataSource.getAuthenticatedUser(username, password)
+                .map(userData -> userEntityDataMapper.from(userData))
+                .toObservable();
+    }
+
+    @Override
+    public Observable<UserEntity> getUserById(int userId) {
+        return localDataSource.getUserById(userId)
                 .map(userData -> userEntityDataMapper.from(userData))
                 .toObservable();
     }

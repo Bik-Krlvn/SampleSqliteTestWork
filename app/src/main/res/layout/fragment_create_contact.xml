@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.main.CreateContactFragment">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="@dimen/large_set_margin_16dp">
+
+
+        <EditText
+            android:id="@+id/et_contact_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/medium_set_margin_8dp"
+            android:background="@drawable/rounded_edit_text_bg"
+            android:hint="@string/label_et_contact_name"
+            android:inputType="textPersonName"
+            android:padding="@dimen/large_set_margin_16dp"
+            tools:ignore="Autofill" />
+
+        <EditText
+            android:id="@+id/et_contact_tel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/medium_set_margin_8dp"
+            android:background="@drawable/rounded_edit_text_bg"
+            android:hint="@string/label_et_contact_tel"
+            android:inputType="number"
+            android:padding="@dimen/large_set_margin_16dp"
+            tools:ignore="Autofill" />
+
+        <EditText
+            android:id="@+id/et_contact_email"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/medium_set_margin_8dp"
+            android:background="@drawable/rounded_edit_text_bg"
+            android:hint="@string/hint_et_email"
+            android:inputType="textEmailAddress"
+            android:padding="@dimen/large_set_margin_16dp"
+            tools:ignore="Autofill" />
+
+
+        <Button
+            android:id="@+id/btn_create_contact"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/large_set_margin_16dp"
+            android:text="@string/label_btn_create_contact" />
+
+
+    </LinearLayout>
+
+</ScrollView>

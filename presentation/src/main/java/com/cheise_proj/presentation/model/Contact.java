@@ -10,6 +10,9 @@ public class Contact {
     private String contact;
     private String email;
 
+    public Contact() {
+    }
+
     public Contact(int id, int userId, String name, String contact, String email) {
         this.id = id;
         this.userId = userId;

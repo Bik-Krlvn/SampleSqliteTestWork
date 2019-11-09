@@ -128,6 +128,51 @@ public class AppLocalDatabase extends SQLiteOpenHelper {
         return userLocal;
     }
 
+    public UserLocal getUserById(int userId) {
+        String[] columns = {
+                LocalDbContract.UserTable._ID,
+                LocalDbContract.UserTable.COLUMN_USERNAME,
+                LocalDbContract.UserTable.COLUMN_EMAIL,
+                LocalDbContract.UserTable.COLUMN_PASSWORD,
+                LocalDbContract.UserTable.COLUMN_IMAGE,
+        };
+        String selection =
+                LocalDbContract.UserTable._ID + " = ?";
+        String[] selectionArgs = {String.valueOf(userId)};
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.query(
+                LocalDbContract.UserTable.TABLE_NAME,
+                columns,
+                selection,
+                selectionArgs,
+                null,
+                null,
+                null,
+                null
+        );
+        int idPos = cursor.getColumnIndex(LocalDbContract.UserTable._ID);
+        int userPos = cursor.getColumnIndex(LocalDbContract.UserTable.COLUMN_USERNAME);
+        int emailPos = cursor.getColumnIndex(LocalDbContract.UserTable.COLUMN_EMAIL);
+        int passPos = cursor.getColumnIndex(LocalDbContract.UserTable.COLUMN_PASSWORD);
+        int imagePos = cursor.getColumnIndex(LocalDbContract.UserTable.COLUMN_IMAGE);
+
+        UserLocal userLocal = new UserLocal();
+
+        if (cursor.moveToFirst()) {
+            do {
+                userLocal.setId(cursor.getInt(idPos));
+                userLocal.setUsername(cursor.getString(userPos));
+                userLocal.setEmail(cursor.getString(emailPos));
+                userLocal.setPassword(cursor.getString(passPos));
+                userLocal.setImagePath(cursor.getString(imagePos));
+
+            } while (cursor.moveToNext());
+        }
+        cursor.close();
+        Logger.getLogger("getUser").log(Level.INFO, "userId: " + userLocal.getId());
+        return userLocal;
+    }
+
     public int insertContact(int userId, String name, String contact, String email) {
         ContentValues values = new ContentValues();
         values.put(LocalDbContract.ContactTable.COLUMN_USER_ID, userId);
@@ -181,13 +226,24 @@ public class AppLocalDatabase extends SQLiteOpenHelper {
 
     public List<ContactLocal> getAllContacts(int userId) {
         List<ContactLocal> contactLocalList = new ArrayList<>();
-        ContactLocal contactLocal = new ContactLocal();
         SQLiteDatabase db = this.getReadableDatabase();
         String[] selectionArgs = {String.valueOf(userId)};
-        String sql = "SELECT * FROM " + LocalDbContract.ContactTable.TABLE_NAME + " WHERE "
-                + LocalDbContract.ContactTable.COLUMN_USER_ID + " = ?";
-
-        Cursor cursor = db.rawQuery(sql,selectionArgs);
+        String[] columns = {
+                LocalDbContract.ContactTable._ID,
+                LocalDbContract.ContactTable.COLUMN_USER_ID,
+                LocalDbContract.ContactTable.COLUMN_NAME,
+                LocalDbContract.ContactTable.COLUMN_TEL,
+                LocalDbContract.ContactTable.COLUMN_EMAIL,
+        };
+        String selection = LocalDbContract.ContactTable.COLUMN_USER_ID + " = ?";
+        Cursor cursor = db.query(
+                LocalDbContract.ContactTable.TABLE_NAME,
+                columns,
+                selection,
+                selectionArgs,
+                null,
+                null,
+                null);
         if (cursor.getCount() == 0) return contactLocalList;
         int idPos = cursor.getColumnIndex(LocalDbContract.ContactTable._ID);
         int userPos = cursor.getColumnIndex(LocalDbContract.ContactTable.COLUMN_USER_ID);
@@ -197,15 +253,18 @@ public class AppLocalDatabase extends SQLiteOpenHelper {
 
         if (cursor.moveToFirst()) {
             do {
-                contactLocal.setId(cursor.getInt(idPos));
-                contactLocal.setUserId(cursor.getInt(userPos));
-                contactLocal.setName(cursor.getString(namePos));
-                contactLocal.setContact(cursor.getString(telPos));
-                contactLocal.setEmail(cursor.getString(emailPos));
-                contactLocalList.add(contactLocal);
+                contactLocalList.add(new ContactLocal(
+                        cursor.getInt(idPos),
+                        cursor.getInt(userPos),
+                        cursor.getString(namePos),
+                        cursor.getString(telPos),
+                        cursor.getString(emailPos)
+                ));
+
             } while (cursor.moveToNext());
         }
         cursor.close();
+        Logger.getLogger("get contacts").log(Level.INFO, "list size: " + contactLocalList.size());
         return contactLocalList;
     }
 

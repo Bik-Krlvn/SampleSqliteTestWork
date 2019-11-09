@@ -4,6 +4,7 @@ import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 
 import com.cheise_proj.domain.useCase.user.AuthenticateUserTask;
+import com.cheise_proj.domain.useCase.user.GetUserByIdTask;
 import com.cheise_proj.domain.useCase.user.RegisterUserTask;
 import com.cheise_proj.presentation.mapper.UserEntityMapper;
 import com.cheise_proj.presentation.model.User;
@@ -21,6 +22,7 @@ public class UserViewModel extends BaseViewModel {
     private AuthenticateUserTask authenticateUserTask;
     private UserEntityMapper userEntityMapper;
     private RegisterUserTask registerUserTask;
+    private GetUserByIdTask getUserByIdTask;
     private MutableLiveData<User> userMutableLiveData = new MutableLiveData<>();
     public LiveData<User> userLiveData = userMutableLiveData;
     private MutableLiveData<Integer> _insertedRow = new MutableLiveData<>();
@@ -34,10 +36,11 @@ public class UserViewModel extends BaseViewModel {
      * @param registerUserTask     provide registration use case from domain layer
      */
     @Inject
-    public UserViewModel(AuthenticateUserTask authenticateUserTask, UserEntityMapper userEntityMapper, RegisterUserTask registerUserTask) {
+    public UserViewModel(AuthenticateUserTask authenticateUserTask, UserEntityMapper userEntityMapper, RegisterUserTask registerUserTask, GetUserByIdTask getUserByIdTask) {
         this.authenticateUserTask = authenticateUserTask;
         this.userEntityMapper = userEntityMapper;
         this.registerUserTask = registerUserTask;
+        this.getUserByIdTask = getUserByIdTask;
     }
 
     /**
@@ -80,6 +83,12 @@ public class UserViewModel extends BaseViewModel {
                             _insertedRow.setValue(integer);
                         })
         );
+    }
+
+    public void getUserById(int userId){
+        disposable.add(getUserByIdTask.buildCase(userId)
+                .map(userEntity -> userEntityMapper.to(userEntity))
+                .subscribe(user -> userMutableLiveData.setValue(user)));
     }
 
 

@@ -12,6 +12,9 @@ public interface LocalDataSource {
 
     Single<UserData> getAuthenticatedUser(String username, String password);
 
+    Single<UserData> getUserById(int userId);
+
+
     Single<Integer> createContact(int userId, String name, String contact, String email);
 
     Single<List<ContactData>> getAllContacts(int userId);

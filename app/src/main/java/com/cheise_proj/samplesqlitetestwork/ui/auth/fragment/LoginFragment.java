@@ -14,15 +14,13 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.cheise_proj.presentation.model.User;
 import com.cheise_proj.presentation.viewmodel.UserViewModel;
 import com.cheise_proj.samplesqlitetestwork.R;
 import com.cheise_proj.samplesqlitetestwork.ui.base.BaseFragment;
-import com.cheise_proj.samplesqlitetestwork.ui.profile.MainActivity;
-import com.cheise_proj.samplesqlitetestwork.utils.Constants;
+import com.cheise_proj.samplesqlitetestwork.ui.main.NavigationActivity;
 
 import java.util.Objects;
 
@@ -93,7 +91,7 @@ public class LoginFragment extends BaseFragment implements View.OnClickListener 
                 return;
             }
             Toast.makeText(getContext(), "welcome: " + user.getUsername(), Toast.LENGTH_SHORT).show();
-            navigateToProfilePage(user);
+            navigateToMainPage(user);
         });
     }
 
@@ -120,14 +118,10 @@ public class LoginFragment extends BaseFragment implements View.OnClickListener 
 
     }
 
-    private void navigateToProfilePage(User user) {
-        Intent profileIntent = new Intent(getContext(), MainActivity.class);
-        profileIntent.putExtra(Constants.USER_ID_EXTRA, user.getId());
-        profileIntent.putExtra(Constants.LOGIN_USERNAME_EXTRA, user.getUsername());
-        profileIntent.putExtra(Constants.LOGIN_EMAIL_EXTRA, user.getEmail());
-        profileIntent.putExtra(Constants.LOGIN_IMAGE_PATH_EXTRA, user.getImagePath());
-
-        startActivity(profileIntent);
+    private void navigateToMainPage(User user) {
+        preferenceUtil.setLoginInfo(true, user.getId());
+        Intent navIntent = new Intent(getContext(), NavigationActivity.class);
+        startActivity(navIntent);
         Objects.requireNonNull(getActivity()).finish();
     }
 

@@ -4,6 +4,7 @@ import androidx.arch.core.executor.testing.InstantTaskExecutorRule;
 
 import com.cheise_proj.domain.repository.UserRepository;
 import com.cheise_proj.domain.useCase.user.AuthenticateUserTask;
+import com.cheise_proj.domain.useCase.user.GetUserByIdTask;
 import com.cheise_proj.domain.useCase.user.RegisterUserTask;
 import com.cheise_proj.presentation.mapper.UserEntityMapper;
 import com.cheise_proj.presentation.model.User;
@@ -45,7 +46,8 @@ public class UserViewModelTest {
                 (userRepository, Schedulers.trampoline(), Schedulers.trampoline());
         RegisterUserTask registerUserTask = new RegisterUserTask(
                 userRepository, Schedulers.trampoline(), Schedulers.trampoline());
-        userViewModel = new UserViewModel(authenticateUserTask, userEntityMapper, registerUserTask);
+        GetUserByIdTask getUserByIdTask = new GetUserByIdTask(userRepository, Schedulers.trampoline(), Schedulers.trampoline());
+        userViewModel = new UserViewModel(authenticateUserTask, userEntityMapper, registerUserTask,getUserByIdTask);
     }
 
     @Test

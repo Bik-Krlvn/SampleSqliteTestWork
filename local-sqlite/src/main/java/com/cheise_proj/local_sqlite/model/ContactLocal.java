@@ -21,6 +21,13 @@ public class ContactLocal {
         this.email = email;
     }
 
+    public ContactLocal(int userId, String name, String contact, String email) {
+        this.userId = userId;
+        this.name = name;
+        this.contact = contact;
+        this.email = email;
+    }
+
     public int getId() {
         return id;
     }

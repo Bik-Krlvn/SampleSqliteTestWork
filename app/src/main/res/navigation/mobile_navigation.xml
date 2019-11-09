@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@id/profileFragment">
+    <fragment
+        android:id="@+id/contactListFragment"
+        android:name="com.cheise_proj.samplesqlitetestwork.ui.main.ContactListFragment"
+        android:label="Contacts"
+        tools:layout="@layout/fragment_contact_list" />
+    <fragment
+        android:id="@+id/createContactFragment"
+        android:name="com.cheise_proj.samplesqlitetestwork.ui.main.CreateContactFragment"
+        android:label="New Contact"
+        tools:layout="@layout/fragment_create_contact" />
+    <fragment
+        android:id="@+id/profileFragment"
+        android:name="com.cheise_proj.samplesqlitetestwork.ui.main.ProfileFragment"
+        android:label="Profile"
+        tools:layout="@layout/fragment_profile" />
+</navigation>
