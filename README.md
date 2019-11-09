@@ -1,4 +1,4 @@
-#A Contact mock application, using Architecture Design pattern;
+# A Contact mock application, using Architecture Design pattern;
 ## Application layer modules
 
 ### app layer (ui)
@@ -13,7 +13,7 @@
        \+/
 ### data layer
 ```
-# DataSource ---+ (Local Persistence(SqLite db was specified), Remote not implemented)
+ DataSource ---+ (Local Persistence(SqLite db was specified), Remote not implemented)
 ```
        \+/
         |
