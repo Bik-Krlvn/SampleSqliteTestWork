@@ -1,4 +1,4 @@
-# A Contact mock application, using Architecture Design pattern;
+# A Contact mock application, using Clean Architecture Design pattern
 ## Application layer modules
 
 ### app layer (ui)
